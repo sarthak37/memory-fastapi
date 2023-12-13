@@ -131,3 +131,13 @@ def cp(source: str = Query(..., regex="/[\\w/.-]+"), destination: str = Query(..
     fs.fs[destination_parent].add(destination_name)
 
     return {"message": "Path copied successfully"}
+    
+@router.delete("/remove")
+def remove(path: str = Query(..., regex="/[\\w/.-]+")):
+    global fs  # Use the global fs object
+    path = fs.join_paths(fs.current_dir, path)  # Use the join_paths method
+    try:
+        fs.remove_path(path)
+        return {"message": "Path removed successfully"}
+    except HTTPException as e:
+        return {"error": str(e)}    

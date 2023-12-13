@@ -35,3 +35,22 @@ class FileSystem:
             return path2
         else:
             return os.path.join(path1, path2)
+
+    def remove_path(self, path):
+        if path == "/":
+            raise HTTPException(status_code=400, detail="Cannot remove root directory")
+        if path not in self.fs:
+            raise HTTPException(status_code=400, detail="Path does not exist")
+
+        parent = self.get_parent(path)
+        name = self.get_name(path)
+
+        if self.is_file(path):
+            del self.fs[path]
+            self.fs[parent].remove(name)
+        elif self.is_directory(path):
+            for subpath in list(self.fs[path]):
+                subpath_full = self.join_paths(path, subpath)
+                self.remove_path(subpath_full)
+            del self.fs[path]
+            self.fs[parent].remove(name)        
