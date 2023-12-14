@@ -1,6 +1,25 @@
-DEPLOYED-LINK - https://sarthak-filesystem-fastapi.onrender.com/docs
+-----------DEPLOYED-LINK - https://sarthak-filesystem-fastapi.onrender.com/docs
 
-OUTPUT-SCREENSHOTS:
+
+===============================================================================RUN-LOCALLY===========================================================================================================================
+
+1)Clone the Repository:
+
+2)Create a Virtual Environment: python -m venv venv
+
+3)Activate the Virtual Environment: venv\Scripts\activate
+
+4)Install Dependencies: pip install -r requirements.txt
+
+5)Run the FastAPI Application:: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+
+
+
+
+
+
+============================================================================OUTPUT-SCREENSHOTS====================================================================================================================
 
 1)MKDIR
 
@@ -35,6 +54,26 @@ OUTPUT-SCREENSHOTS:
 
 ![image](https://github.com/sarthak37/memory-fastapi/assets/52873771/97d26961-31e8-4804-a4ed-8515522049a3)
 
+
+===================================================================================================ABOUT=============================================================================================================
+
+This code represents a basic implementation of a FastAPI application with a simple file system, and it includes unit tests for the defined routes. Let's break down the structure and functionality:
+
+main.py: This is the main entry point of the FastAPI application. It creates a FastAPI instance and includes the router from the routes module.
+
+filesystem.py: This module defines a FileSystem class, similar to the previous example. It includes methods to check the validity of paths, determine if a given path is a directory or file, get the parent and name of a path, join paths, and perform operations such as creating directories, files, moving, copying, etc.
+
+routes.py: This module defines API routes using FastAPI's APIRouter. It uses the FileSystem class from filesystem.py to handle file system operations. Each route function corresponds to a specific HTTP endpoint and performs file system operations accordingly.
+
+test_main.py: This file contains unit tests for the FastAPI routes defined in routes.py. It uses the TestClient from FastAPI to simulate HTTP requests and checks the responses.
+
+The setUp method initializes the TestClient before each test.
+
+Each test method corresponds to a specific route and checks the response status code and type.
+
+For example, test_mkdir tests the /mkdir route, and it checks if the response status code is 200 and if the JSON response matches the expected message.
+
+The __name__ == '__main__' block runs the unit tests when the script is executed directly.
 
 
 
