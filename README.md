@@ -1,4 +1,6 @@
-=============DEPLOYED-LINK - https://sarthak-filesystem-fastapi.onrender.com/docs  (make take a minute to load)==========================
+DEPLOYED-LINK - https://sarthak-filesystem-fastapi.onrender.com/docs  
+
+(make take 1 minute to load)
 
 
 ===============================================================================RUN-LOCALLY===========================================================================================================================
